@@ -3,7 +3,7 @@ import { axiosWithAuth } from './axiosWithAuth';
 
 import AddFriend from './AddFriend';
 
-const FriendsList = () => {
+const FriendList = () => {
     const [friends, setFriends] = useState([]);
 
     useEffect(() => {
@@ -28,9 +28,9 @@ const FriendsList = () => {
     return(
         <div>
             <AddFriend />
-            FriendsList: {renderFriends()}
+            FriendList: {renderFriends()}
         </div>
     );
 };
 
-export default FriendsList;
+export default FriendList;

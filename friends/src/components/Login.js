@@ -14,7 +14,7 @@ const Login = ({ history }) => {
             })
             .then(res => {
                 localStorage.setItem('token', res.data.payload);
-                history.push("/friendlist");
+                history.push("/friendslist");
             })
             .catch(error => console.log(error.response));
     };
