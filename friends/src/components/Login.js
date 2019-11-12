@@ -18,7 +18,28 @@ class Login extends React.Component {
             }
         });
     }
+
+    login = e => {
+        e.preventDefault();
+        axios 
+            .post('/api/login', this.state.credentials)
+            .then(res => {
+                console.log('res', res);
+                const { data } = response;
+
+                localStorage.setItem('token', data.payload);
+                this.setState({ ...this.state, isLoggedIn: true});
+            });
+    };
     
+    componentDidMount() {
+        if (localStorage.getItem('token')) {
+            this.setState({ ...this.state, isLoggedIn: true });
+        } else {
+            this.setState({ ...this.state, isLoggedIn: false });
+        }
+    }
+
     render() {
         return (
             <div>
@@ -38,6 +59,8 @@ class Login extends React.Component {
                     <button type="submit">Log In</button>
                 </form>
             </div>
-        )
+        );
     }
-}
+};
+
+export default Login;
